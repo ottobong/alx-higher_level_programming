@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 12-roman_to_int.py
-# Yovo Koffi Vianney
+# Ottobong Christopher
 
 
 def roman_to_int(roman_string):

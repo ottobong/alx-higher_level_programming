@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 10-best_score.py
-# Yovo Koffi Vianney
+# Ottobong Christopher
 
 
 def best_score(a_dictionary):

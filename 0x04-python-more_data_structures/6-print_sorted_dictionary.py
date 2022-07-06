@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 6-print_sorted_dictionary.py
-# Yovo Koffi Vianney
+# Ottobong Christopher
 
 
 def print_sorted_dictionary(a_dictionary):

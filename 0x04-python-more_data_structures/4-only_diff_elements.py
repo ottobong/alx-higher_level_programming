@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 4-only_diff_elements.py
-# Yovo Koffi Vianney
+# Ottobong Christopher
 
 
 def only_diff_elements(set_1, set_2):

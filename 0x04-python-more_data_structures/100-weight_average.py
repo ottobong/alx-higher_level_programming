@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 100-weight_average.py
-# Yovo Koffi Vianney
+# Ottobong Christopher
 
 
 def weight_average(my_list=[]):

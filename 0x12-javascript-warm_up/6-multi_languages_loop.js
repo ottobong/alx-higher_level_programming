@@ -1,8 +1,10 @@
 #!/usr/bin/node
+const multiLine = [
+  'C is fun',
+  'Python is cool',
+  'JavaScript is amazing'
+];
 
-const langArray = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-let i = 0;
-while (i < langArray.length) {
-  console.log(langArray[i]);
-  i++;
+for (let i = 0; i < multiLine.length; i++) {
+  console.log(multiLine[i]);
 }

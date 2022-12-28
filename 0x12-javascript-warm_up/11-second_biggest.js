@@ -1,12 +1,9 @@
 #!/usr/bin/node
-
-const size = process.argv.length;
-
-if (size <= 3) {
+if (process.argv.length <= 3) {
   console.log(0);
 } else {
-  const newA = process.argv.map(Number);
-  newA.slice(2, size);
-  newA.sort((a, b) => a - b);
-  console.log(newA[newA.length - 2]);
+  const args = process.argv.map(Number)
+    .slice(2, process.argv.length)
+    .sort((a, b) => a - b);
+  console.log(args[args.length - 2]);
 }

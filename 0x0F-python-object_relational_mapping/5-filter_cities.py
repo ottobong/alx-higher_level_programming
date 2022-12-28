@@ -1,36 +1,19 @@
 #!/usr/bin/python3
-""" This module takes the name of a state as argument and displays all cities
-    of that state, using the database hbtn_0e_0_usa
-"""
-
-import MySQLdb
+# Displays all cities of a given state from the
+# states table of the database hbtn_0e_4_usa.
+# Safe from SQL injections.
+# Usage: ./5-filter_cities.py <mysql username> \
+#                             <mysql password> \
+#                             <database name> \
+#                             <state name searched>
 import sys
-
-
-def main():
-    """
-        Entry point to the program:
-        creates a database connection and performs operations on
-        the databse.
-    """
-
-    # Create a database connection
-    conn = MySQLdb.connect(
-                host="localhost", port=3306, user=sys.argv[1],
-                passwd=sys.argv[2], db=sys.argv[3], charset="utf8mb4"
-            )
-    cur = conn.cursor()
-    # Select states
-    state_name = sys.argv[4]
-    cur.execute(
-            "SELECT name FROM cities WHERE state_id IN\
-            (SELECT id FROM states WHERE name = %s)\
-            ORDER BY cities.id", (state_name, ))
-    query_rows = cur.fetchall()
-    print(', '.join([x[0] for x in query_rows]))
-    cur.close()
-    conn.close()
-
+import MySQLdb
 
 if __name__ == "__main__":
-    main()
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT * FROM `cities` as `c` \
+                INNER JOIN `states` as `s` \
+                   ON `c`.`state_id` = `s`.`id` \
+                ORDER BY `c`.`id`")
+    print(", ".join([ct[2] for ct in c.fetchall() if ct[4] == sys.argv[4]]))

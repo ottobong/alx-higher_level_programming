@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-""" Sends request to URL provided as command and display the
-    value of the X-Request-Id found in the header of the response
-"""
-from sys import argv
-import urllib.request as req
+"""Fetches a header of a response from a URL."""
+import sys
+from urllib import request
 
-if __name__ == "__main__":
-    url = argv[1]
 
-    with req.urlopen(url) as response:
-        print(dict(response.headers).get("X-Request-Id"))
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        url = sys.argv[1]
+        with request.urlopen(url) as response:
+            print(response.headers['X-Request-Id'])

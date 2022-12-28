@@ -1,14 +1,14 @@
 #!/usr/bin/python3
-""" Sends a request to a given URL and display the body of the response."""
-
+"""Sends a request to a URL and prints its response or error code."""
+import sys
 import requests
-from sys import argv
 
-if __name__ == "__main__":
-    url = argv[1]
 
-    r = requests.get(url)
-    if r.status_code >= 400:
-        print("Error code: {}".format(r.status_code))
-    else:
-        print(r.text)
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        url = sys.argv[1]
+        response = requests.get(url)
+        if response.status_code >= 400:
+            print('Error code: {}'.format(response.status_code))
+        else:
+            print(response.text)

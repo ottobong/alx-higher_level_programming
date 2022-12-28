@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-""" takes URL and Email as arguments. sends a POST request to the
-    passed URL with the email as parameter. and finally displays the
-    body of the response.
-"""
-
+"""Sends a form data to a URL."""
+import sys
 import requests
-from sys import argv
 
-if __name__ == "__main__":
-    url = argv[1]
-    email = {'email': argv[2]}
 
-    r = requests.post(url, data=email)
-    print(r.text)
+if __name__ == '__main__':
+    if len(sys.argv) > 2:
+        url = sys.argv[1]
+        email = sys.argv[2]
+        form_data = [('email', email)]
+        response = requests.post(url, data=form_data)
+        print(response.text)

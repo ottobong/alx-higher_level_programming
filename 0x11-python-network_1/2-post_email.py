@@ -1,18 +1,13 @@
 #!/usr/bin/python3
-"""Sends a POST request to the URL passed as argument
-    with the email as a parameter also passed as argument,
-    displays the body of the repsonse(decoded in utf-8)
-"""
-from sys import argv
-import urllib.request as req
-import urllib.parse as parse
+"""Sends a form data to a URL."""
+import sys
+from urllib import request, parse
 
-if __name__ == "__main__":
-    url = argv[1]
-    values = {'email': argv[2]}
-    email = parse.urlencode(values).encode("ascii")
 
-    request = req.Request(url, email)
-    with req.urlopen(request) as response:
-        page = response.read()
-        print(page.decode("utf-8"))
+if __name__ == '__main__':
+    if len(sys.argv) > 2:
+        url = sys.argv[1]
+        email = sys.argv[2]
+        form_data = bytes(parse.urlencode([('email', email)]), 'utf-8')
+        with request.urlopen(sys.argv[1], data=form_data) as response:
+            print(response.read().decode('utf-8'))
